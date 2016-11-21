@@ -1,0 +1,61 @@
+#!/bin/sh
+# Program:
+#  SCP多主机同步文件
+#  1、需先配置SSH：主控机上执行 ssh-keygen -t rsa生成pubkey，添加到受控主机的~/.ssh/authorized_keys授权
+#  2、将集群内所有主机IP清单添中到hosts.lst，注意不要包含本机IP
+#  3、设置basedir变量，并将路径加入到PATH中方便调用
+#  用法：up filename    上传到所有主机
+#        up filename ip 上传到指定主机
+# History:
+#  2011/12/14  BlueXIII  创建
+
+basedir=$(cd "$(dirname "$0")"; pwd)
+logdir=$basedir/logs
+logfile=`date +%Y%m%d`
+logtime=`date +"%Y-%m-%d %H:%M:%S"`
+
+function upload()
+{ 
+  if [ -f $file ]
+  then
+    cmd=`scp $file $host:$file`
+    res=$?
+    if [ -z $cmd ]
+    then
+      echo "[$logtime]:  $host:$file  $res"|tee -a $logdir/${logfile}.log
+    fi 
+  elif [ -d $file ]
+  then
+    cmd=`scp -r $file $host:$file`
+    res=$?
+    if [ -z $cmd ]
+    then
+      echo "[$logtime]:  $host:$file $res"|tee -a $logdir/${logfile}.log
+    fi
+  fi
+}
+
+if [ $# = 0 ]
+then
+  echo "[$logtime]:  need at least one para"|tee -a $logdir/${logfile}.log
+  exit 1
+fi
+
+file=`pwd`"/$1"
+if [ ! -e $file ]
+then
+  echo "[$logtime]:  file not found:\"$1\""|tee -a $logdir/${logfile}.log
+  exit 1
+fi
+
+if [ $2 ]
+then
+  host=$2
+  upload
+else
+  for host in $(sed '/^$/d' $basedir/hosts.lst)
+  do
+    upload
+  done
+fi
+exit 0

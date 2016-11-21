@@ -1,0 +1,9 @@
+ProxyDom    AdminServer 132.77.138.155 6001 weblogic ********* /ngbss1/webapp/domains/ProxyDom/start.sh    /ngbss1/webapp/domains/ProxyDom/stop.sh   
+AcctManmDom AdminServer 132.77.138.155 6401 weblogic ********* /ngbss1/webapp/domains/AcctManmDom/start.sh /ngbss1/webapp/domains/AcctManmDom/stop.sh
+CustServDom AdminServer 132.77.138.155 6501 weblogic ********* /ngbss1/webapp/domains/CustServDom/start.sh /ngbss1/webapp/domains/CustServDom/stop.sh
+BssFrameDom AdminServer 132.77.138.155 6101 weblogic ********* /ngbss1/webapp/domains/BssFrameDom/start.sh /ngbss1/webapp/domains/BssFrameDom/stop.sh
+StatServDom AdminServer 132.77.138.155 6301 weblogic ********* /ngbss1/webapp/domains/StatServDom/start.sh /ngbss1/webapp/domains/StatServDom/stop.sh
+CustManmDom AdminServer 132.77.138.156 6201 weblogic ********* /ngbss2/webapp/domains/CustManmDom/start.sh /ngbss2/webapp/domains/CustManmDom/stop.sh
+ChnlManmDom AdminServer 132.77.138.156 6801 weblogic ********* /ngbss2/webapp/domains/ChnlManmDom/start.sh /ngbss2/webapp/domains/ChnlManmDom/stop.sh
+ResManmDom  AdminServer 132.77.138.156 6601 weblogic ********* /ngbss2/webapp/domains/ResManmDom/start.sh  /ngbss2/webapp/domains/ResManmDom/stop.sh 
+MiscDom     AdminServer 132.77.138.156 6701 weblogic ********* /ngbss2/webapp/domains/MiscDom/start.sh     /ngbss2/webapp/domains/MiscDom/stop.sh    

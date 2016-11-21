@@ -1,0 +1,50 @@
+#WebLogic管理脚本说明
+
+#配置文件：
+nodemanagers.lst
+adminservers.lst
+managedservers.lst
+
+
+#nodemanager启停脚本：
+node.sh
+功能：远程停启指定主机的nodemanager
+用法：
+node.sh start 132.77.138.143  //启动一个nodemanager
+node.sh stop  132.77.138.143  //停止一个nodemanager
+node.sh startall              //启动所有nodemanager
+node.sh stopall               //停止所有nodemanager
+nodemanager清单详见：/ngbss/webapp/admin/nodemanagers.lst
+
+
+#AdminServer启停脚本：
+domain.sh
+功能：远程停启指定主机的AdminServer
+用法：
+domain.sh start ProxyDom  //启动一个Domain的AdminServer
+domain.sh stop  ProxyDom  //停止一个Domain的AdminServer
+domain.sh startall        //启动所有Domain的AdminServer
+domain.sh stopall         //停止所有Domain的AdminServer
+AdminServer清单详见：/ngbss/webapp/admin/adminservers.lst
+
+
+#ManagedServer启停脚本：
+server.sh
+功能：wlst脚本方式远程启停被管server
+用法：
+server.sh start proxy_t_13   //启动一个被管server
+server.sh stop  proxy_t_13   //停止一个被管server
+server.sh startdom ProxyDom  //启动一个domain的所有被管server
+server.sh stopdom  ProxyDom  //停止一个domain的所有被管server
+server.sh startall           //启动所有domian的所有被管server
+server.sh stopall            //停止所有domian的所有被管server
+被管Server清单详见：/ngbss/webapp/admin/managedservers.lst
+Domain清单详见：/ngbss/webapp/admin/adminservers.lst
+
+#端口测试：
+port.sh
+功能：端口测试
+用法：
+port.sh node     //测试nodemanager端口
+port.sh admin    //测试nodemanager端口
+port.sh server   //测试nodemanager端口
